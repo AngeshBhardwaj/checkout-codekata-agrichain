@@ -2,6 +2,7 @@ import time
 from src.checkout import Checkout
 from src.items import available_items
 from src.offers import available_offers
+from utils.logger import logger
 
 
 def print_welcome_menu():
@@ -39,7 +40,8 @@ def get_valid_menu_selection(sel_option: str):
     try:
         valid_sel_option = int(sel_option)
     except:
-            valid_sel_option = 0
+        logger.warning("Invalid option selected: {}".format(sel_option))
+        valid_sel_option = 0
     
     return valid_sel_option
 
@@ -55,11 +57,14 @@ if __name__ == '__main__':
     main_menu_sel = 0
     while main_menu_sel != 1 or main_menu_sel != 2:
         main_menu_sel = get_valid_menu_selection(input())
-            
+        logger.info("Main menu option selected: {}".format(main_menu_sel))
+
         if main_menu_sel == 2:
+            logger.info("Confirming if the user wants to exit?")
             print("\nAre you sure you want to exit?. Enter Y to confirm.")
             exit_cnf = input()
             if exit_cnf.upper() == 'Y':
+                logger.warning("Exit confirmed by user. Exiting...")
                 exit(0)
             else:
                 main_menu_sel = 0
@@ -72,18 +77,23 @@ if __name__ == '__main__':
             while action_menu_sel != 2:
                 print("\nWhat would you like to do with your shopping cart?\n\t1. Scan an item and add it.\n\t2. Calculate the total amount and check-out.")
                 action_menu_sel = get_valid_menu_selection(input())
+                logger.info("Action menu option selected: {}".format(action_menu_sel))
 
                 if action_menu_sel == 1:
                     new_cart_item = input()
                     shopping_cart.scan(new_cart_item)
                     print("The item has been added to your cart! Items in cart are: {}".format(shopping_cart.cart_items))
                 elif action_menu_sel == 2:
+                    final_cart = shopping_cart.cart_items
                     total_price = shopping_cart.price
                     print("\nThe total price of items in your cart is: {}\nThanks for Shopping!".format(total_price))
+                    logger.info("Cart checked out successfully. Cart Items: '{}', Cart total price: {}".format(final_cart, total_price))
                 else:
                     print("You have selected an invalid option, please select a valid option.")
             
             # set the user back to main menu so he can use the app again.
+            time.sleep(1)
+            logger.info("Action menu options completed, switching the user back to 'Main menu'.")
             print("\nPlease select an option:\n\t1. Scan items for checkout.\n\t2. Exit the application.")
         else:
             print("You have selected an invalid option, please select a valid option.")
