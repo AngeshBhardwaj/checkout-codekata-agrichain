@@ -5,6 +5,10 @@ from src.offers import available_offers
 
 
 def print_welcome_menu():
+    """
+    The function `print_welcome_menu` displays a welcome message and the pricing information for
+    available items with special offers.
+    """
     print("\n*********************************\n Hey There! Welcome to the Shop.\n*********************************")
     print("\nProduct pricing for this week is as below:\n")
     print("\nItem\tUnit price\tSpecial Price\n------------------------------------------------")
@@ -19,6 +23,18 @@ def print_welcome_menu():
 
 
 def get_valid_menu_selection(sel_option: str):
+    """
+    The function `get_valid_menu_selection` converts a given string input to an integer, returning 0 if
+    the conversion fails.
+    
+    :param sel_option: The function `get_valid_menu_selection` takes a string input `sel_option` and
+    attempts to convert it into an integer. If the conversion is successful, it returns the integer
+    value. If there is an exception during the conversion (e.g., if the input is not a valid integer),
+    it returns
+    :return: The function `get_valid_menu_selection` returns the valid menu selection option as an
+    integer. If the input `sel_option` can be converted to an integer successfully, it returns that
+    integer value. If the conversion fails (e.g., if the input is not a valid integer), it returns 0.
+    """
     valid_sel_option = 0
     try:
         valid_sel_option = int(sel_option)
