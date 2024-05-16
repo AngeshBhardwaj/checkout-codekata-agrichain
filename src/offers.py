@@ -1,4 +1,5 @@
 from utils.helper import *
+from utils.logger import logger
 
 
 class OfferList:
@@ -21,6 +22,7 @@ class OfferList:
         for purchasing the specified quantity of the item
         """
         if len(item) > 1:
+            logger.error('Item name must have 1 character only')
             raise ValueError('Item name must have 1 character only')
 
         # check if the offer has an entry for item already? If not, add it to prevent KeyError

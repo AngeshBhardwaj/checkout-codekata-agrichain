@@ -1,4 +1,5 @@
 from utils.helper import *
+from utils.logger import logger
 
 
 class ItemList:
@@ -19,6 +20,7 @@ class ItemList:
         the value
         """
         if len(item) > 1:
+            logger.error('Item name must have 1 character only')
             raise ValueError('Item name must have 1 character only')
 
         self._items[item] = price
