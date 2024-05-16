@@ -2,10 +2,13 @@
 
 A code kata to demonstrate programming skills in python3. **This is an exercise by AgriChain**
 The goal of the exercise is to implement the code for a supermarket checkout process that calculates the total price of items added in the cart by the customer. In the store, they use individual letters of the alphabet (A, B, C, and so on) to represent items. Products can be purchased at their individual pricing or at a discounted price when purchased in groups as listed below: 
+
 ![image](https://github.com/AngeshBhardwaj/checkout-codekata-agrichain/assets/13464654/b0ee3bc3-179f-4619-a3fe-cd50385a0d9d)
+
 For example, item ‘A’ might cost $50 individually, but this week we have a special offer: buy three ‘A’s and they’ll cost you $130.
 
 Comprehensive test cases have been added to validate that the checkout accepts items in any order, so that if we scan product B, then product A, and then another product B, we’ll recognize the two B’s and price them at a discounted price of $45 instead of individual pricing of $30, which brings the Total order pricing to Rs 95. Below example cases have been validated by automated test cases included in the application:
+
 ![image](https://github.com/AngeshBhardwaj/checkout-codekata-agrichain/assets/13464654/0d380d1c-49a0-40b0-afe5-13823a213d6c)
 
 ## Application Features
