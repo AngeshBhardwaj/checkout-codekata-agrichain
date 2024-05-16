@@ -1,8 +1,9 @@
+from utils.read_config import config_data
 import logging
 
 # creating a logger object named 'checkout_app_logger'
 logger = logging.getLogger('checkout_app_logger')
-logger.setLevel(logging.INFO)
+logger.setLevel(config_data['log_level'])
 
 # Create handlers
 f_handler = logging.FileHandler('./logs/app.log')
