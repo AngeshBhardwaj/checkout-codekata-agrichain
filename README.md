@@ -22,21 +22,21 @@ As your application is all set and tests are passing, we are sure that the app i
 
 ## App set-up and execution - Docker
 
-This application can also be used as a containerized application with docker. Assuming that you already have docker installed on your machine, you can simply bring up the app in docker with the command `docker compose up --build`. The compose.yaml file has the port and other details already.
+This application can also be used as a containerized application with docker. Assuming that you already have docker installed on your machine, you can simply bring up the app in docker with the command `docker compose up --build`. The compose.yaml file has the port and other details already. _[As our application requires interactive terminal, this command will give '' error and terminate. **you will need to run it manually in interactive mode using `docker run -ti checkout-codekata-agrichain-server` command.**]_
 
 Alternatively, you can also use the more usual command of creating a Docker image of the application first and then running an instance of that image, the commands for that would be
 
-1. `docker build -t checkout-agrichain .` - This will build a docker image based upon the dockerfile and tag it with the name 'checkout-agrichain'.
+1. `docker build -t checkout-codekata-agrichain-server .` - This will build a docker image based upon the dockerfile and tag it with the name 'checkout-agrichain'.
 2. Once the image is successful, you can verify that using the `docker images` command, you should see the latest image of 'checkout-agrichain' listed there.
-3. Now the last step would be to run a container based on the image. Use `docker run --name checkout-app -p 8000:8080 checkout-agrichain` command for that.
+3. Now the last step would be to run a container based on the image. Use `docker run -ti --name checkout-app -p 8000:8080 checkout-codekata-agrichain-server` command for that.
 
 ## Areas of improvement
 
-The final solution must demonstrate
+The application can be further enhanced to
 
--   Documentation / Comments
--   Logging if possible / print statements at least.
--   Exception handling
--   Read price / Offer from external files, so that they can be modified
--   using configs
--   A readme file that's comprehensive enough to tell from design to usage.
+-   Read price / Offer from external file (csv/text), so that they can be modified externally.
+-   Option for cancelling Cart or having more detailed / incremental total price with visible savings due to offers.
+-   Using fixtures and stubs for test so that test data also gets read from data files and are independent of actual offers available.
+-   The application will struggle to handle large item list as of now, if the requirement arises, a different data structure can be considered.
+-   Environment control can be added for better validation in different lifecycles.
+-   Asynchronous programming can be introduced for better scaling, not needed as of now.
